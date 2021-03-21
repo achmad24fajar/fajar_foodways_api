@@ -1,6 +1,6 @@
 const multer = require("multer");
 
-exports.uploadFile = (imageFile, videoFile) => {
+exports.uploadFile = (image, video) => {
   //initialisasi multer diskstorage
   //menentukan destionation file diupload
   //menentukan nama file (rename agar tidak ada nama file ganda)
@@ -15,7 +15,7 @@ exports.uploadFile = (imageFile, videoFile) => {
 
   //function untuk filter file berdasarkan type
   const fileFilter = function (req, file, cb) {
-    if (file.fieldname === imageFile) {
+    if (file.fieldname === image) {
       if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
         req.fileValidationError = {
           message: "Only image files are allowed!",
@@ -24,7 +24,7 @@ exports.uploadFile = (imageFile, videoFile) => {
       }
     }
 
-    if (file.fieldname === videoFile) {
+    if (file.fieldname === video) {
       if (!file.originalname.match(/\.(mp4|mkv)$/)) {
         req.fileValidationError = {
           message: "Only Video files are allowed!",
@@ -47,11 +47,11 @@ exports.uploadFile = (imageFile, videoFile) => {
     },
   }).fields([
     {
-      name: imageFile,
+      name: image,
       maxCount: 1,
     },
     {
-      name: videoFile,
+      name: video,
       maxCount: 1,
     },
   ]); //fields digunakan karena file yang diupload lebih dari 1 fields

@@ -14,6 +14,6 @@ router.get('/products', getProducts);
 router.get('/products/:id', getProductsByUser);
 router.get('/product/:id', getDetailProduct);
 
-router.post('/register', uploadFile("imageFile", "videoFile"), registerUser);
+router.post('/register', uploadFile("image", "video"), registerUser);
 
 module.exports = router

@@ -7,15 +7,16 @@ exports.registerUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log(req.files)
+
     const schema = Joi.object({
       fullname: Joi.string().required(),
       email: Joi.string().email().min(10).max(50).required(),
       password: Joi.string().min(8).required(),
       phone: Joi.string().required(),
+      location: Joi.string(),
       role: Joi.string().required(),
     });
-
-    console.log(req.body)
 
     const { error } = schema.validate(req.body);
 
@@ -42,8 +43,8 @@ exports.registerUser = async (req, res) => {
 
     const user = await User.create({
       ...req.body,
-      image: req.files.imageFile[0].filename,
-      video: req.files.videoFile[0].filename,
+      image: req.files.image[0].filename,
+      video: req.files.video[0].filename,
       password: hashedPassword,
     });
 
