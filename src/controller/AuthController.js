@@ -43,12 +43,11 @@ exports.registerUser = async (req, res) => {
     const user = await User.create({
       ...req.body,
       image: req.files.image[0].filename,
-      video: req.files.video[0].filename,
       password: hashedPassword,
     });
 
     const secretKey = "akda4860@a9d1";
-    const token = jwt.sign(
+    const token = 'Bearer ' + jwt.sign(
       {
         id: user.id,
       },
@@ -67,7 +66,6 @@ exports.registerUser = async (req, res) => {
           token,
           role: user.role,
           image: url + user.image,
-          video: url + user.video,
         },
       },
     });
@@ -121,7 +119,7 @@ exports.loginUser = async (req, res) => {
     }
 
     const secretKey = "akda4860@a9d1";
-    const token = jwt.sign(
+    const token = 'Bearer ' + jwt.sign(
       {
         id: checkEmail.id,
       },

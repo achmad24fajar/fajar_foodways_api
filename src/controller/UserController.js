@@ -7,7 +7,7 @@ exports.getUsers = async (req, res) => {
 		const users = await User.findAll();
 		res.send({
 			status: "success",
-			message: "All members was successfully display",
+			message: "All users was successfully display",
 			data: {
 				users,
 			}
@@ -17,9 +17,6 @@ exports.getUsers = async (req, res) => {
 		res.status(500).send({
 			status: "error",
 			message: "Server error",
-			data: {
-				users,
-			}
 		});
 	}
 

@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "foodways_api",
+    "database": "fajar_foodways_api",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

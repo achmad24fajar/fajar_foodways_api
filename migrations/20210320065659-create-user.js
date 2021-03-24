@@ -26,9 +26,6 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      video: {
-        type: Sequelize.STRING
-      },
       role: {
         type: Sequelize.STRING
       },
